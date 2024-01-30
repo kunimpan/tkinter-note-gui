@@ -11,6 +11,15 @@ root.geometry("600x600")
 root.resizable(0, 0)
 root.config(bg="#6c8099")
 
+
+def changeFont(e):
+    if fontStyle.get() == "none":
+        myFont=(fontFamily.get(), fontSize.get()) #font(name, style)
+    else:
+        myFont=(fontFamily.get(), fontSize.get(), fontStyle.get()) #font(name, size, style)
+
+    textArea.config(font=myFont)
+
 #settings
 menu_color="#dbdadb"
 text_color="white"
@@ -41,7 +50,7 @@ btnQuit.grid(row=0, column=3, padx=5, pady=4)
 #font options
 allFonts = font.families() #All fonts in your device.
 fontFamily=StringVar() #Keep font.
-fontOption=OptionMenu(menuFrame, fontFamily, *allFonts)
+fontOption=OptionMenu(menuFrame, fontFamily, *allFonts, command=changeFont)
 fontFamily.set("Arial")
 fontOption.config(width=20)
 fontOption.grid(row=0, column=4, padx=5, pady=5)
@@ -49,15 +58,15 @@ fontOption.grid(row=0, column=4, padx=5, pady=5)
 #size option
 sizes=[8, 12, 18, 25, 36, 42, 50]
 fontSize=IntVar()  #Keep font size.
-sizeOption = OptionMenu(menuFrame, fontSize, *sizes)
+sizeOption = OptionMenu(menuFrame, fontSize, *sizes, command=changeFont)
 fontSize.set(12)
 sizeOption.config(width=5)
 sizeOption.grid(row=0, column=5, padx=5, pady=5)
 
 #style option
-styles=["none", "Bold", "Iitalic"]
+styles=["none", "bold", "italic"]
 fontStyle = StringVar()
-styleOption = OptionMenu(menuFrame, fontStyle, *styles)
+styleOption = OptionMenu(menuFrame, fontStyle, *styles, command=changeFont)
 fontStyle.set("none")
 styleOption.config(width=10)
 styleOption.grid(row=0, column=6, padx=5, pady=5)
