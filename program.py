@@ -3,6 +3,7 @@ from PIL import ImageTk, Image
 from tkinter import font
 from tkinter import scrolledtext
 import tkinter.messagebox
+from tkinter.filedialog import *
 
 #root window
 root=Tk()
@@ -31,6 +32,14 @@ def closeNote():
     if confirm == "yes":
         root.destroy()
 
+def saveNote():
+    myFile = asksaveasfilename(initialdir="./",title="Save note", filetypes=(("Text File", "*.txt"), ("All File", "*")))
+    with open(myFile, "w", encoding="utf8") as file:
+        file.write(fontFamily.get()+"\n") #keep font family.
+        file.write(str(fontSize.get())+"\n") #keep font size.
+        file.write(fontStyle.get()+"\n") #keep font style.
+        file.write(textArea.get("1.0", END)) #keep text.
+
 #settings
 menu_color="#dbdadb"
 text_color="white"
@@ -51,7 +60,7 @@ btnOpen=Button(menuFrame, image=open_img)
 btnOpen.grid(row=0, column=1, padx=5, pady=5)
 
 save_img=ImageTk.PhotoImage(Image.open("icons/save.png"))
-btnSave=Button(menuFrame, image=save_img)
+btnSave=Button(menuFrame, image=save_img, command=saveNote)
 btnSave.grid(row=0, column=2, padx=5, pady=5)
 
 quit_img=ImageTk.PhotoImage(Image.open("icons/quit.png"))
