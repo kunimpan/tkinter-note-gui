@@ -1,6 +1,7 @@
 from tkinter import *
 from PIL import ImageTk, Image
 from tkinter import font
+from tkinter import scrolledtext
 
 #root window
 root=Tk()
@@ -60,5 +61,10 @@ styleOption = OptionMenu(menuFrame, fontStyle, *styles)
 fontStyle.set("none")
 styleOption.config(width=10)
 styleOption.grid(row=0, column=6, padx=5, pady=5)
+
+#scroll text
+myFont=(fontFamily.get(), fontSize.get())
+textArea = scrolledtext.ScrolledText(textFrame, bg=text_color, font=myFont, width=1000, height=1000)
+textArea.pack()
 
 root.mainloop()
