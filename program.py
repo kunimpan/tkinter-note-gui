@@ -1,4 +1,5 @@
 from tkinter import *
+from PIL import ImageTk, Image
 
 #root window
 root=Tk()
@@ -17,5 +18,23 @@ menuFrame=Frame(root, bg=menu_color)
 textFrame=Frame(root, bg=text_color)
 menuFrame.pack(padx=5, pady=5)
 textFrame.pack(padx=5, pady=5)
+
+#menu button
+new_img=ImageTk.PhotoImage(Image.open("icons/new.png"))
+btnNew=Button(menuFrame, image=new_img)
+btnNew.grid(row=0, column=0, padx=5, pady=5)
+
+open_img=ImageTk.PhotoImage(Image.open("icons/open.png"))
+btnOpen=Button(menuFrame, image=open_img)
+btnOpen.grid(row=0, column=1, padx=5, pady=5)
+
+save_img=ImageTk.PhotoImage(Image.open("icons/save.png"))
+btnSave=Button(menuFrame, image=save_img)
+btnSave.grid(row=0, column=2, padx=5, pady=5)
+
+quit_img=ImageTk.PhotoImage(Image.open("icons/quit.png"))
+btnQuit=Button(menuFrame, image=quit_img)
+btnQuit.grid(row=0, column=3, padx=5, pady=4)
+
 
 root.mainloop()
