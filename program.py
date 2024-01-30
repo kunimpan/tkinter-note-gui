@@ -26,6 +26,11 @@ def newNote():
     if confirm == "yes":
         textArea.delete("1.0" , END)
 
+def closeNote():
+    confirm = tkinter.messagebox.askquestion("Confirm", "Do you want to close program?")
+    if confirm == "yes":
+        root.destroy()
+
 #settings
 menu_color="#dbdadb"
 text_color="white"
@@ -50,7 +55,7 @@ btnSave=Button(menuFrame, image=save_img)
 btnSave.grid(row=0, column=2, padx=5, pady=5)
 
 quit_img=ImageTk.PhotoImage(Image.open("icons/quit.png"))
-btnQuit=Button(menuFrame, image=quit_img)
+btnQuit=Button(menuFrame, image=quit_img, command=closeNote)
 btnQuit.grid(row=0, column=3, padx=5, pady=4)
 
 #font options
