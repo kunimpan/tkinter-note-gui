@@ -1,5 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image
+from tkinter import font
 
 #root window
 root=Tk()
@@ -36,5 +37,12 @@ quit_img=ImageTk.PhotoImage(Image.open("icons/quit.png"))
 btnQuit=Button(menuFrame, image=quit_img)
 btnQuit.grid(row=0, column=3, padx=5, pady=4)
 
+#font options
+allFonts = font.families() #All fonts in your device.
+fontFamily=StringVar() #Keep font.
+fontOption=OptionMenu(menuFrame, fontFamily, *allFonts)
+fontFamily.set("Arial")
+fontOption.config(width=20)
+fontOption.grid(row=0, column=4, padx=5, pady=5)
 
 root.mainloop()
