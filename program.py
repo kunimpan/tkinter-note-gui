@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import ImageTk, Image
 from tkinter import font
 from tkinter import scrolledtext
+import tkinter.messagebox
 
 #root window
 root=Tk()
@@ -20,6 +21,11 @@ def changeFont(e):
 
     textArea.config(font=myFont)
 
+def newNote():
+    confirm = tkinter.messagebox.askquestion("Confirm", "Do you want to create a new note?")
+    if confirm == "yes":
+        textArea.delete("1.0" , END)
+
 #settings
 menu_color="#dbdadb"
 text_color="white"
@@ -32,7 +38,7 @@ textFrame.pack(padx=5, pady=5)
 
 #menu button
 new_img=ImageTk.PhotoImage(Image.open("icons/new.png"))
-btnNew=Button(menuFrame, image=new_img)
+btnNew=Button(menuFrame, image=new_img, command=newNote)
 btnNew.grid(row=0, column=0, padx=5, pady=5)
 
 open_img=ImageTk.PhotoImage(Image.open("icons/open.png"))
