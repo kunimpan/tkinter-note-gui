@@ -53,4 +53,12 @@ fontSize.set(12)
 sizeOption.config(width=5)
 sizeOption.grid(row=0, column=5, padx=5, pady=5)
 
+#style option
+styles=["none", "Bold", "Iitalic"]
+fontStyle = StringVar()
+styleOption = OptionMenu(menuFrame, fontStyle, *styles)
+fontStyle.set("none")
+styleOption.config(width=10)
+styleOption.grid(row=0, column=6, padx=5, pady=5)
+
 root.mainloop()
