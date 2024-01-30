@@ -45,4 +45,12 @@ fontFamily.set("Arial")
 fontOption.config(width=20)
 fontOption.grid(row=0, column=4, padx=5, pady=5)
 
+#size option
+sizes=[8, 12, 18, 25, 36, 42, 50]
+fontSize=IntVar()  #Keep font size.
+sizeOption = OptionMenu(menuFrame, fontSize, *sizes)
+fontSize.set(12)
+sizeOption.config(width=5)
+sizeOption.grid(row=0, column=5, padx=5, pady=5)
+
 root.mainloop()
