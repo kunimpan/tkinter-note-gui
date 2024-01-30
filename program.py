@@ -40,6 +40,17 @@ def saveNote():
         file.write(fontStyle.get()+"\n") #keep font style.
         file.write(textArea.get("1.0", END)) #keep text.
 
+def openNote():
+    myFile = askopenfilename(initialdir="./", title="Open note", filetypes=(("Text File", "*.txt"), ("All File", "*")))
+    with open(myFile, "r", encoding="utf8") as file:
+        textArea.delete("1.0", END)
+        fontFamily.set(file.readline().strip()) #Read line one and set.
+        fontSize.set(file.readline().strip()) #Read line two and set.
+        fontStyle.set(file.readline().strip()) #Read line three and set.
+        changeFont(1)
+        content = file.read() # read all
+        textArea.insert("1.0", content)
+
 #settings
 menu_color="#dbdadb"
 text_color="white"
@@ -56,7 +67,7 @@ btnNew=Button(menuFrame, image=new_img, command=newNote)
 btnNew.grid(row=0, column=0, padx=5, pady=5)
 
 open_img=ImageTk.PhotoImage(Image.open("icons/open.png"))
-btnOpen=Button(menuFrame, image=open_img)
+btnOpen=Button(menuFrame, image=open_img, command=openNote)
 btnOpen.grid(row=0, column=1, padx=5, pady=5)
 
 save_img=ImageTk.PhotoImage(Image.open("icons/save.png"))
